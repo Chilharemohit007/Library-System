@@ -35,6 +35,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDTO> getAllBooks() {
+        //AOP for testing purpose
+        //getBookById(-1);
 
         List<Book> allBooks = bookRepo.findAll();
         //List<BookDTO> collect = all.stream().map(m -> mapToDTO(m)).collect(Collectors.toList());
@@ -45,6 +47,19 @@ public class BookServiceImpl implements BookService {
         }
 
     }
+
+    public String getBookById(int id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("Book ID must be positive");
+        }
+        if (id == 1) {
+            return "Spring in Action";
+        } else if (id == 2) {
+            return "Effective Java";
+        }
+        return "Book Not Found!";
+    }
+
 
     @Override
     public BookDTO getBookByIdOrName(String idOrName) {
