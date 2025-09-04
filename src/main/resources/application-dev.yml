@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library_system_2
+    username: postgres
+    password: postgres

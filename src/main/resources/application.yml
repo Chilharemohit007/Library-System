@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: LibrarySystem
+
+server:
+  port: 8089
+
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  secret: mahadev@2912ThisIsASecretKeyForJWT256BitsLong!
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,threaddump,heapdump,configprops,mappings,loggers
+  endpoint:
+    health:
+      show-details: always

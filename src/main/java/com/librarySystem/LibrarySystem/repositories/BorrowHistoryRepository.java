@@ -11,10 +11,13 @@ import java.util.List;
 
 public interface BorrowHistoryRepository extends JpaRepository<BorrowHistory, Long> {
 
-    List<BorrowHistory> findByUserUsername(Long username);
+    // Search borrow history by username (String)
+    List<BorrowHistory> findByUserUsername(String username);
 
-    @Query("SELECT b FROM BorrowHistory b WHERE b.user.id =:user_id")
+    // Search borrow history by userId (Long)
+    @Query("SELECT b FROM BorrowHistory b WHERE b.user.id = :user_id")
     List<BorrowHistory> findByUserId(@Param("user_id") Long userId);
 
+    // Paginated search by userId (Long)
     Page<BorrowHistory> findByUserId(Long userId, Pageable pageable);
 }

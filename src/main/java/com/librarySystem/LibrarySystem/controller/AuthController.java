@@ -18,8 +18,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-import javax.servlet.http.HttpServlet;
-
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

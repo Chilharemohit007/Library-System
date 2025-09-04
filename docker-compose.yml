@@ -1,0 +1,39 @@
+services:
+  postgres_db:
+    image: postgres:14
+    container_name: librarysystem_postgres
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: library_system_2
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - librarysystem_net
+
+  librarysystem_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: librarysystem_app
+    depends_on:
+      - postgres_db
+    ports:
+      - "8090:8089"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker   # 👈 ensure Docker profile is used
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/library_system_2
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - librarysystem_net
+
+volumes:
+  postgres_data:
+
+networks:
+  librarysystem_net:
+    driver: bridge

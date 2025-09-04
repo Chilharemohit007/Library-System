@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         Set<Roles> roleName = dto.getRoles().stream().map(role -> rolesRepository.findByRole("ROLE_" + role).orElseThrow(
                 () -> new ResourceNotFoundException("Role Not Found...!", "Role")
         )).collect(Collectors.toSet());
+        System.out.println("Looking for role: ROLE_" + roleName);
 
         user.setRoles(roleName);
 

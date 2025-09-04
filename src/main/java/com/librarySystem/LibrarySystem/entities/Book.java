@@ -1,6 +1,7 @@
 package com.librarySystem.LibrarySystem.entities;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity

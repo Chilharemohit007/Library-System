@@ -2,7 +2,7 @@ package com.librarySystem.LibrarySystem.entities;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
